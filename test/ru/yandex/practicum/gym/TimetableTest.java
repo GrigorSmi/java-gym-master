@@ -134,7 +134,8 @@ class TimetableTest {
         Timetable timetable = new Timetable();
 
         // Проверяем добавление null-тренировки — должно вызвать исключение
-        assertThrows(IllegalArgumentException.class,
+
+        Assertions.assertThrows(IllegalArgumentException.class,
                 () -> timetable.addNewTrainingSession(null),
                 "Добавление null-тренировки должно вызывать исключение"
         );
