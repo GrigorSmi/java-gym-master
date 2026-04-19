@@ -33,7 +33,6 @@ public class Timetable {
         TreeMap<TimeOfDay, List<TrainingSession>> dayMap = timetable.get(dayOfWeek);
 
         if (dayMap == null) {
-            System.out.println("Нет тренировок в " + dayOfWeek);
             return Collections.emptyList();
         }
 

@@ -127,6 +127,41 @@ class TimetableTest {
     private void assertNotNull(List<TrainingSession> nullDaySessions, String s) {
     }
 
+    @Test
+    void testMultipleTrainingsAtSameTime() {
+        Timetable timetable = new Timetable();
+
+        Group group1 = new Group("Йога", Age.ADULT, 60);
+        Group group2 = new Group("Плавание", Age.CHILD, 45);
+
+        Coach coach1 = new Coach("Иванов", "Пётр", "Сергеевич");
+        Coach coach2 = new Coach("Васильев", "Николай", "Иванович");
+
+        TimeOfDay sameTime = new TimeOfDay(18, 0);
+        DayOfWeek day = DayOfWeek.MONDAY;
+
+        // Создаём две тренировки на один день и время, но с разными группами и тренерами
+        TrainingSession session1 = new TrainingSession(group1, coach1, day, sameTime);
+        TrainingSession session2 = new TrainingSession(group2, coach2, day, sameTime);
+
+        // Добавляем обе тренировки в расписание
+        timetable.addNewTrainingSession(session1);
+        timetable.addNewTrainingSession(session2);
+
+        // Получаем тренировки для указанного дня и времени
+        List<TrainingSession> sessionsAtTime = timetable.getTrainingSessionsForDayAndTime(day, sameTime);
+
+        // Проверяем, что обе тренировки добавлены и доступны
+        assertEquals(2, sessionsAtTime.size(),
+                "В одно время должны быть доступны две тренировки");
+
+        // Проверяем, что обе тренировки присутствуют в результате
+        assertTrue(sessionsAtTime.contains(session1),
+                "Первая тренировка должна присутствовать в расписании");
+        assertTrue(sessionsAtTime.contains(session2),
+                "Вторая тренировка должна присутствовать в расписании");
+
+    }
 
     // Тест на обработку null-значений
     @Test
