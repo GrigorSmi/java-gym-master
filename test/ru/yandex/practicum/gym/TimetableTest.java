@@ -2,7 +2,7 @@ package ru.yandex.practicum.gym;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import java.time.DayOfWeek;
+import java.time.DayOfWeek;//попробуем
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
