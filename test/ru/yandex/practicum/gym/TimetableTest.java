@@ -2,11 +2,7 @@ package ru.yandex.practicum.gym;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.time.DayOfWeek;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.List;
 
 class TimetableTest {
@@ -131,7 +127,6 @@ class TimetableTest {
     private void assertNotNull(List<TrainingSession> nullDaySessions, String s) {
     }
 
-    // Тест на добавление несколько занятий в одно время
     @Test
     void testMultipleTrainingsAtSameTime() {
         Timetable timetable = new Timetable();
@@ -165,8 +160,8 @@ class TimetableTest {
                 "Первая тренировка должна присутствовать в расписании");
         assertTrue(sessionsAtTime.contains(session2),
                 "Вторая тренировка должна присутствовать в расписании");
-    }
 
+    }
 
     // Тест на обработку null-значений
     @Test
@@ -234,7 +229,7 @@ class TimetableTest {
 
         Group group = new Group("Акробатика для взрослых", Age.ADULT, 90);
 
-        // Иванов — 3 тренировки
+               // Иванов — 3 тренировки
         timetable.addNewTrainingSession(new TrainingSession(group, coach1, DayOfWeek.MONDAY, new TimeOfDay(18, 0)));
         timetable.addNewTrainingSession(new TrainingSession(group, coach1, DayOfWeek.TUESDAY, new TimeOfDay(19, 0)));
         timetable.addNewTrainingSession(new TrainingSession(group, coach1, DayOfWeek.THURSDAY, new TimeOfDay(20, 0)));
